@@ -6,11 +6,10 @@ interface playerType {
   symbol: string;
 }
 interface coord {
-  [key: number]: number;
   coord: number[];
 }
 interface moveType {
-  coord: coord[];
+  coord: number[];
   player: playerType;
 }
 
@@ -40,11 +39,14 @@ function App() {
   }, [moves]);
 
   function checkWin(fM: moveType[]) {
-    const xValues = {};
-    const yValues = {};
+    const xValues: number[] = [0, 0, 0];
+    const yValues: number[] = [0, 0, 0];
     fM.forEach((move) => {
       xValues[move.coord[0]] = xValues[move.coord[0]]
         ? xValues[move.coord[0]] + 1
+        : 1;
+      yValues[move.coord[1]] = yValues[move.coord[1]]
+        ? yValues[move.coord[1]] + 1
         : 1;
     });
     return false;
@@ -62,7 +64,7 @@ function App() {
     });
     const text = fMoves ? fMoves.player.symbol : "";
     return (
-      <div className="tileT" onClick={() => addMove(coord: coord)}>
+      <div className="tileT" onClick={() => addMove(coord)}>
         {text}
       </div>
     );
