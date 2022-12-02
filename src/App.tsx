@@ -33,7 +33,7 @@ function App() {
   useEffect(() => {
     if (moves.length < 3) return;
     const cP = moves[moves.length - 1].player;
-    const fM = moves.filter((move) => move.player.name === cP.name);
+    const fM = moves.filter((move: moveType) => move.player.name === cP.name);
     if (checkWin(fM)) {
       setWinner(cP);
     }
@@ -57,12 +57,12 @@ function App() {
   }
 
   function Tile({ coord }: { coord: number[] }) {
-    const fMoves = moves.find((move) => {
+    const fMoves = moves.find((move: moveType) => {
       return move.coord.join() === coord.join();
     });
     const text = fMoves ? fMoves.player.symbol : "";
     return (
-      <div className="tileT" onClick={() => addMove(coord)}>
+      <div className="tileT" onClick={() => addMove(coord: coord)}>
         {text}
       </div>
     );
