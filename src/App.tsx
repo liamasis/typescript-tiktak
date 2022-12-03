@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 interface playerType {
-  name: string;
+  name: string | null;
   symbol: string;
 }
 interface coord {
@@ -42,13 +42,16 @@ function App() {
     const xValues: number[] = [0, 0, 0];
     const yValues: number[] = [0, 0, 0];
     fM.forEach((move) => {
-      xValues[move.coord[0]] = xValues[move.coord[0]]
-        ? xValues[move.coord[0]] + 1
+      xValues[move.coord[0] - 1] = xValues[move.coord[0] - 1]
+        ? xValues[move.coord[0] - 1] + 1
         : 1;
-      yValues[move.coord[1]] = yValues[move.coord[1]]
-        ? yValues[move.coord[1]] + 1
+      yValues[move.coord[1] - 1] = yValues[move.coord[1] - 1]
+        ? yValues[move.coord[1] - 1] + 1
         : 1;
     });
+    console.log(xValues);
+    if (xValues.find((val) => val === 3)) return true;
+    if (yValues.find((val) => val === 3)) return true;
     return false;
   }
   function addMove(coord: number[]) {
@@ -69,7 +72,9 @@ function App() {
       </div>
     );
   }
-
+  if (winner) {
+    return <div>winner: {winner.name}</div>;
+  }
   return (
     <div className="App">
       <div className="tileRow">
