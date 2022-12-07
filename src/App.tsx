@@ -1,6 +1,21 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+/* There are two different types of testing: unit integration e2e
+  - Unit testing: Fully isolated. Test one function one by one.
+    Write thousands of these
+    No dependencies
+  - Integration: testing function that calls a function. Dependencies. 
+    Write a good couple of these
+    few dependencies
+  - End to end (E2E): Testing full flow. Manipulate the DOM. 
+    Write few
+    Lots of dependencies
+  The more dependenci es the harder it is to test.
+  Cypress for E2E
+  Jest for Unit and integration Testing.
+  Puppeteer can be used for E2E but mostly web scraping.
+*/
 interface playerType {
   name: string | null;
   symbol: string;
@@ -73,7 +88,11 @@ function App() {
     );
   }
   if (winner) {
-    return <div>winner: {winner.name}</div>;
+    return (
+      <div>
+        <h1>Winner: {winner.name}</h1>
+      </div>
+    );
   }
   return (
     <div className="App">
