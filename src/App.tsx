@@ -16,19 +16,19 @@ import "./App.css";
   Jest for Unit and integration Testing.
   Puppeteer can be used for E2E but mostly web scraping.
 */
-interface playerType {
+export interface playerType {
   name: string | null;
   symbol: string;
 }
-interface coord {
+export interface coord {
   coord: number[];
 }
-interface moveType {
+export interface moveType {
   coord: number[];
   player: playerType;
 }
 
-function App() {
+export function App() {
   const players = [
     {
       name: "Liam",
