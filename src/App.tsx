@@ -12,9 +12,10 @@ import "./App.css";
     Write few
     Lots of dependencies
   The more dependenci es the harder it is to test.
-  Cypress for E2E
+  Cypress or React Testing Library for E2E
   Jest for Unit and integration Testing.
   Puppeteer can be used for E2E but mostly web scraping.
+  You can integrate E2E into jest testing as jest is light wait and you can import renderers/screens and use them in same file.
 */
 export interface playerType {
   name: string | null;
